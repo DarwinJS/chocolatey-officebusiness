@@ -9,10 +9,33 @@
         <licenseUrl>http://windows.microsoft.com/en-us/windows-live/microsoft-services-agreement</licenseUrl>
         <projectUrl>http://office.microsoft.com/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Get the latest versions of your familiar Office programs, such as Word, Excel and PowerPoint, and more, all in one convenient subscription. This will download and silently install the entire Office 365 2016 Business Retail edition. A license is required and you will be prompted to enter your account information upon first launching the software after install.</description>
+        <description>Get the latest versions of your familiar Office programs, such as Word, Excel and PowerPoint, and more, all in one convenient subscription. This will download and silently install the entire Office 365 2016 Business Retail edition. A license is required and you will be prompted to enter your account information upon first launching the software after install.
+
+
+        https://technet.microsoft.com/en-us/library/jj219426.aspx
+
+        </description>
         <summary>Office365Business</summary>
         <packageSourceUrl>https://github.com/jordigg/chocolatey-officebusiness/office365business</packageSourceUrl>
-		<releaseNotes />
+		<releaseNotes>
+        This package takes the following switches:
+
+        -params '"/OfficeProdIDsToExclude:Access,Groove,InfoPath,Lync,OneDrive,OneNote,Outlook,SharePointDesigner,Visio"'
+            Comma seperated list of products to not install.  Check the ID attribute on this page https://technet.microsoft.com/en-us/library/jj219426.aspx 
+            to learn  the internal identifiers that are valid in this list. 
+
+        -params '"/OverrideConfigFileFullPath:true"'
+            Normally you should install 32-bit office on 64-bit windows for the sake of plug-in compatibility - so that is what this package defaults to.
+            In order to override and have 64-bit office on 64-bit Windows, use this switch.
+            If you use this switch on 32-bit Windows, you just get a warning and 32-bit is installed - so you don't have to be careful about using it on both.
+
+        -params '"/OverrideConfigFileFullPath=c:\full\path\to\your\config.xml"'
+            Allows you to completely customize the config.xml file.
+            It must conform to this specification: 
+            It must conform to this specification: https://technet.microsoft.com/en-us/library/jj219426.aspx
+            Using this switch causes /OfficeProdIDsToExclude to be ignored if it is also used.
+
+        </releaseNotes>
         <tags>Office365Business Office 365 Bussines</tags>
     </metadata>
     <files>
